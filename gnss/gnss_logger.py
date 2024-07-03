@@ -35,7 +35,7 @@ def main():
 
     try:
         while True:
-            current_time = datetime.now()
+            current_time = datetime.utcnow()
 
             if file_start_time is None or current_time - file_start_time >= timedelta(hours=1):
                 if current_file:
@@ -43,7 +43,7 @@ def main():
                 file_start_time = current_time.replace(minute=0, second=0, microsecond=0)
                 current_file = get_output_file(file_start_time).open('w', newline='')
                 csv_writer = csv.writer(current_file)
-                csv_writer.writerow(['Time', 'Latitude', 'Longitude', 'Speed (m/s)', 'Heading (degrees)', 'Altitude (m)'])
+                csv_writer.writerow(['Time (UTC)', 'Latitude', 'Longitude', 'Speed (m/s)', 'Heading (degrees)', 'Altitude (m)'])
 
             data = sock.recv(4096).decode('utf-8')
             buffer += data
@@ -52,8 +52,10 @@ def main():
             for line in lines[:-1]:
                 parsed_data = parse_gpsd_json(line)
                 if parsed_data:
+                    # Parse the UTC time from the GPS data
+                    gps_time = datetime.strptime(parsed_data.get('time', ''), "%Y-%m-%dT%H:%M:%S.%fZ")
                     row = [
-                        parsed_data.get('time', 'N/A'),
+                        gps_time.strftime("%Y-%m-%d %H:%M:%S"),
                         parsed_data.get('lat', 'N/A'),
                         parsed_data.get('lon', 'N/A'),
                         parsed_data.get('speed', 'N/A'),
