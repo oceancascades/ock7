@@ -23,7 +23,7 @@ def get_output_file(start_time):
     base_dir = Path("/data/gnss")
     day_dir = base_dir / start_time.strftime('%Y%m%d')
     day_dir.mkdir(parents=True, exist_ok=True)
-    filename = f"gps_data_{start_time.strftime('%Y%m%d_%H')}.cv"
+    filename = f"gps_data_{start_time.strftime('%Y%m%d_%H')}.csv"
     return day_dir / filename
 
 def main():
