@@ -2,6 +2,8 @@
 
 GMKTek K7 minipc for logging and at sea processing.
 
+This computer is configured as a Jupyter Hub server using 'The Littlest Jupyter Hub'
+
 ## GNSS logger config
 
 ### 1. Save the Python Script
