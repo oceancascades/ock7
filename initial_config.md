@@ -24,15 +24,25 @@ Remember to replace with your username!
 curl -L https://tljh.jupyter.org/bootstrap.py | sudo -E python3 - --admin <admin-user-name>
 ```
 
+If this fails (as it did on a new install recently, try 'the hard way').
+
 Get the environments that I want to install
 
 ```
 git clone https://github.com/oceancascades/conda_environments
 ```
 
+### Install JupyterHub the hard way
+
+https://github.com/jupyterhub/jupyterhub-the-hard-way/blob/HEAD/docs/installation-guide-hard.md
+
+
+
 ### Install matlab with an offline license
 
-Follow the [instructions](https://www.mathworks.com/help/install/ug/install-using-a-file-installation-key.html). May need to contact system admin to acquire an offline license file. 
+Follow the [instructions](https://www.mathworks.com/help/install/ug/install-using-a-file-installation-key.html). 
+
+To acquire an offline license file I had to contact my system admin and provide a hostid (the computer MAC address, acquired using `ifconfig`) and the computer name and the version of MATLAB needed.
 
 Unzip the installer into a directory to avoid spewing files everywhere. 
 ```
