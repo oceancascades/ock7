@@ -3,10 +3,18 @@
 Setup ssh access and terminal. Aldo install some useful software packages. 
 
 ```
-sudo apt install python3 python3-dev git curl net-tools openssh-client ssh
+sudo apt install python3 python3-dev git curl net-tools openssh-client ssh vim
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"
 sudo ufw allow 22
 ```
+
+Set the hostname to something we want.
+
+```
+sudo hostnamectl set-hostname newhostname
+```
+
+Also edit `/etc/hosts` to include the new hostname.
 
 ### Install [TLJH](https://tljh.jupyter.org/en/latest/install/custom-server.html).
 
