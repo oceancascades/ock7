@@ -36,7 +36,36 @@ git clone https://github.com/oceancascades/conda_environments
 
 https://github.com/jupyterhub/jupyterhub-the-hard-way/blob/HEAD/docs/installation-guide-hard.md
 
+I followed the instructions to the letter down to the conda environments section. In the configuration I enabled access to all users that could authenticate:
 
+```
+c.Authenticator.allow_all = True
+```
+I also uncommented
+
+```
+c.JupyterHub.authenticator_class = 'jupyterhub.auth.PAMAuthenticator'
+```
+
+I did not install the environments as suggested either. Instead I get the environments that I want to install from github.
+
+```
+git clone https://github.com/oceancascades/conda_environments
+```
+
+Then I
+
+```
+sudo /opt/conda/bin/conda env create --prefix /opt/conda/envs/multitool -f multitool.yml
+sudo /opt/conda/envs/multitool/bin/python -m ipykernel install --prefix /usr/local/ --name 'multitool' --display-name "multitool"
+sudo /opt/conda/bin/conda env create --prefix /opt/conda/envs/arrr -f arrr.yml
+```
+
+Install R kernel
+
+```
+sudo /opt/conda/envs/arrr/bin/R
+```
 
 ### Install matlab with an offline license
 
