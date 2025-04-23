@@ -100,7 +100,7 @@ sudo mkdir /mnt/sharename
 Make an `fstab` entry:
 
 ```
-//server/sharename /mnt/sharename cifs guest,uid=1000,gid=1000,iocharset=utf8 0 0
+//server/sharename /mnt/sharename cifs guest,uid=1000,gid=1000,iocharset=utf8,file_mode=0777,dir_mode=0777 0 0
 ```
 
 replacing server and sharename as appropriate.
