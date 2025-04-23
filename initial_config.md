@@ -88,3 +88,19 @@ unzip -d matlab matlab_R2024b_Linux.zip
 ```
 
 There is a bug in the matlab GUI so you might need to delete your default network gateway (kind of crazy!). 
+
+
+### Mounting an SMB share for all users
+
+```
+sudo apt install cifs-utils
+sudo mkdir /mnt/sharename
+```
+
+Make an `fstab` entry:
+
+```
+//server/sharename /mnt/sharename cifs guest,uid=1000,gid=1000,iocharset=utf8 0 0
+```
+
+replacing server and sharename as appropriate.
